@@ -3,6 +3,12 @@
  * Jwansa Clinic functions and definitions
  */
 
+// إخفاء رسائل التحذير (Deprecated) الخاصة بـ PHP 8 والتي تظهر من إضافات أو من نواة ووردبريس
+// إظهار الأخطاء الفادحة مؤقتاً لمعرفة سبب العطل
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+
 if ( ! function_exists( 'jwansa_setup' ) ) :
 	function jwansa_setup() {
 		// Let WordPress manage the document title.

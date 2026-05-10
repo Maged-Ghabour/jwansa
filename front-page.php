@@ -334,8 +334,8 @@ get_header(); ?>
         </div>
         <div class="booking__map">
             <?php $map_iframe = get_field('map_iframe'); ?>
-            <?php if($map_iframe): ?>
-                <?php echo $map_iframe; ?>
+            <?php if( !empty($map_iframe) ): ?>
+                <?php echo wp_kses_post( (string) $map_iframe ); ?>
             <?php else: ?>
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3710.2!2d46.7!3d24.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDQyJzAwLjAiTiA0NsKwNDInMDAuMCJF!5e0!3m2!1sar!2ssa!4v1"
