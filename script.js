@@ -34,49 +34,116 @@ document.addEventListener('DOMContentLoaded', () => {
     q.addEventListener('click', () => {
       quizQuestions.forEach(item => {
         item.classList.remove('quiz__q--active');
-        item.querySelector('.quiz__dot').classList.remove('quiz__dot--active');
+        const dot = item.querySelector('.quiz__dot');
+        if (dot) dot.classList.remove('quiz__dot--active');
       });
       q.classList.add('quiz__q--active');
-      q.querySelector('.quiz__dot').classList.add('quiz__dot--active');
+      const dot = q.querySelector('.quiz__dot');
+      if (dot) dot.classList.add('quiz__dot--active');
     });
   });
 
   /* ---------- STICKY NAVBAR SHADOW ---------- */
   const navbar = document.querySelector('.navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      navbar.style.boxShadow = '0 4px 24px rgba(0,0,0,0.12)';
-    } else {
-      navbar.style.boxShadow = '0 2px 16px rgba(0,0,0,0.07)';
-    }
-  });
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navbar.style.boxShadow = '0 4px 24px rgba(0,0,0,0.12)';
+      } else {
+        navbar.style.boxShadow = '0 2px 16px rgba(0,0,0,0.07)';
+      }
+    });
+  }
 
-  /* ---------- BOOKING FORM SUBMIT ---------- */
+  /* ---------- MOBILE MENU TOGGLE ---------- */
+  const navToggle = document.getElementById('navToggle');
+
+  if (navToggle && navbar) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navbar.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // إغلاق القائمة عند النقر على أي رابط
+    document.querySelectorAll('.navbar__links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navbar.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // إغلاق عند النقر خارج القائمة
+    document.addEventListener('click', (e) => {
+      if (!navbar.contains(e.target)) {
+        navbar.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* ---------- BOOKING FORM SUBMIT (AJAX) ---------- */
   const bookingForm = document.getElementById('bookingForm');
   if (bookingForm) {
     bookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const btn = bookingForm.querySelector('button[type="submit"]');
-      btn.textContent = '✓ تم الحجز بنجاح!';
-      btn.style.background = '#27ae60';
-      btn.style.borderColor = '#27ae60';
-      setTimeout(() => {
-        btn.textContent = 'احجز الآن';
-        btn.style.background = '';
-        btn.style.borderColor = '';
-        bookingForm.reset();
-      }, 3000);
+
+      // البحث عن زر الإرسال (داخل النموذج أو خارجه)
+      const btn = document.querySelector('button[type="submit"][form="bookingForm"]')
+                  || bookingForm.querySelector('button[type="submit"]');
+      if (!btn) return;
+
+      const originalHTML = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = 'جاري الإرسال...';
+
+      // تجميع بيانات النموذج
+      const formData = new FormData();
+      formData.append('action',          'jwansa_booking');
+      formData.append('nonce',           (typeof jwansaAjax !== 'undefined') ? jwansaAjax.nonce : '');
+      formData.append('booking_name',    bookingForm.querySelector('[name="booking_name"]')?.value    || '');
+      formData.append('booking_phone',   bookingForm.querySelector('[name="booking_phone"]')?.value   || '');
+      formData.append('booking_service', bookingForm.querySelector('[name="booking_service"]')?.value || '');
+      formData.append('booking_file',    bookingForm.querySelector('[name="booking_file"]')?.value    || '');
+      formData.append('booking_message', bookingForm.querySelector('[name="booking_message"]')?.value || '');
+
+      const ajaxUrl = (typeof jwansaAjax !== 'undefined') ? jwansaAjax.url : '/wp-admin/admin-ajax.php';
+
+      fetch(ajaxUrl, { method: 'POST', body: formData })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            btn.textContent = '✓ ' + data.data.message;
+            btn.style.background = '#27ae60';
+            btn.style.borderColor = '#27ae60';
+            bookingForm.reset();
+            setTimeout(() => {
+              btn.innerHTML = originalHTML;
+              btn.style.background = '';
+              btn.style.borderColor = '';
+              btn.disabled = false;
+            }, 4000);
+          } else {
+            btn.innerHTML = originalHTML;
+            btn.disabled = false;
+            alert(data.data?.message || 'حدث خطأ، يرجى المحاولة مرة أخرى.');
+          }
+        })
+        .catch(() => {
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+          alert('حدث خطأ في الاتصال، يرجى المحاولة مرة أخرى.');
+        });
     });
   }
 
   /* ---------- ACTIVE NAV LINK ON SCROLL ---------- */
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.navbar__links a');
+  const sections    = document.querySelectorAll('section[id]');
+  const navLinkEls  = document.querySelectorAll('.navbar__links a');
 
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        navLinks.forEach(link => link.classList.remove('active'));
+        navLinkEls.forEach(link => link.classList.remove('active'));
         const activeLink = document.querySelector(
           `.navbar__links a[href="#${entry.target.id}"]`
         );

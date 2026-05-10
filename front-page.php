@@ -80,7 +80,9 @@ get_header(); ?>
                 <p><?php the_sub_field('service_description'); ?></p>
               </div>
               <div class="service-card__img-wrapper">
-                <img src="<?php echo esc_url($icon['url']); ?>" alt="<?php the_sub_field('service_title'); ?>" />
+                <?php if( $icon && !empty($icon['url']) ): ?>
+                <img src="<?php echo esc_url($icon['url']); ?>" alt="<?php the_sub_field('service_title'); ?>" loading="lazy" />
+                <?php endif; ?>
               </div>
             </div>
             <?php endwhile; ?>
@@ -298,19 +300,19 @@ get_header(); ?>
           <form id="bookingForm">
             <div class="form-row">
               <div class="form-group">
-                <label>الاسم:</label>
-                <input type="text" placeholder="محمد أحمد" />
+                <label for="booking_name">الاسم:</label>
+                <input type="text" id="booking_name" name="booking_name" placeholder="محمد أحمد" required />
               </div>
               <div class="form-group">
-                <label>رقم الجوال:</label>
-                <input type="tel" dir="ltr" style="text-align: right;" placeholder="+095 123 4567" />
+                <label for="booking_phone">رقم الجوال:</label>
+                <input type="tel" id="booking_phone" name="booking_phone" dir="ltr" style="text-align: right;" placeholder="+095 123 4567" required />
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label>اختر الخدمة:</label>
+                <label for="booking_service">اختر الخدمة:</label>
                 <div class="custom-select-wrapper">
-                  <select>
+                  <select id="booking_service" name="booking_service">
                     <option>خلع سن أو ضرس عادي</option>
                     <option>حشوة تجميلية</option>
                     <option>حشوة وقائية للأطفال</option>
@@ -319,13 +321,13 @@ get_header(); ?>
                 </div>
               </div>
               <div class="form-group">
-                <label>رقم الملف (إن وجد):</label>
-                <input type="text" placeholder="مثال: 75" />
+                <label for="booking_file">رقم الملف (إن وجد):</label>
+                <input type="text" id="booking_file" name="booking_file" placeholder="مثال: 75" />
               </div>
             </div>
             <div class="form-group">
-              <label>رسالتك (إن وجد):</label>
-              <textarea placeholder="رسالتك" rows="5"></textarea>
+              <label for="booking_message">رسالتك (إن وجد):</label>
+              <textarea id="booking_message" name="booking_message" placeholder="رسالتك" rows="5"></textarea>
             </div>
           </form>
           <?php endif; ?>
