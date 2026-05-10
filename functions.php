@@ -134,3 +134,38 @@ function jwansa_localize_scripts() {
 	) );
 }
 add_action( 'wp_enqueue_scripts', 'jwansa_localize_scripts', 20 );
+
+/**
+ * Fallback functions for ACF (Advanced Custom Fields)
+ * Prevents Fatal Errors if the ACF plugin is not installed or activated.
+ */
+if ( ! function_exists( 'get_field' ) ) {
+	function get_field( $selector, $post_id = false, $format_value = true ) {
+		return false;
+	}
+}
+if ( ! function_exists( 'the_field' ) ) {
+	function the_field( $selector, $post_id = false, $format_value = true ) {
+		// do nothing
+	}
+}
+if ( ! function_exists( 'have_rows' ) ) {
+	function have_rows( $selector, $post_id = false ) {
+		return false;
+	}
+}
+if ( ! function_exists( 'the_row' ) ) {
+	function the_row() {
+		// do nothing
+	}
+}
+if ( ! function_exists( 'get_sub_field' ) ) {
+	function get_sub_field( $selector, $format_value = true ) {
+		return false;
+	}
+}
+if ( ! function_exists( 'the_sub_field' ) ) {
+	function the_sub_field( $selector, $format_value = true ) {
+		// do nothing
+	}
+}
