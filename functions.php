@@ -142,6 +142,16 @@ function jwansa_localize_scripts() {
 add_action( 'wp_enqueue_scripts', 'jwansa_localize_scripts', 20 );
 
 /**
+ * Register ACF Fields Programmatically
+ */
+require_inline_acf_fields();
+function require_inline_acf_fields() {
+	if ( file_exists( get_template_directory() . '/inc/acf-fields.php' ) ) {
+		require_once get_template_directory() . '/inc/acf-fields.php';
+	}
+}
+
+/**
  * Fallback functions for ACF (Advanced Custom Fields)
  * Prevents Fatal Errors if the ACF plugin is not installed or activated.
  */
