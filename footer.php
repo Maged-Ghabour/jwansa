@@ -32,16 +32,7 @@
                 d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
               </path>
             </svg>
-            <a href="tel:<?php echo get_field('phone_number', 'option') ? get_field('phone_number', 'option') : '+095123456789'; ?>" dir="ltr"><?php echo get_field('phone_display', 'option') ? get_field('phone_display', 'option') : '+095 123 4567'; ?></a>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" class="contact-icon">
-              <path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-              </path>
-            </svg>
-            <a href="tel:<?php echo get_field('phone_2_number', 'option') ? get_field('phone_2_number', 'option') : '+095123456789'; ?>" dir="ltr"><?php echo get_field('phone_2_display', 'option') ? get_field('phone_2_display', 'option') : '+095 123 4567'; ?></a>
+            <a href="tel:<?php echo get_field('phone_number', 'option') ? get_field('phone_number', 'option') : '+966177222220'; ?>" dir="ltr"><?php echo get_field('phone_display', 'option') ? get_field('phone_display', 'option') : '+966177222220'; ?></a>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -49,7 +40,15 @@
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
-            <span dir="ltr"><?php echo get_field('email_address', 'option') ? get_field('email_address', 'option') : 'example@hotmail.com'; ?></span>
+            <span dir="ltr"><?php echo get_field('email_address', 'option') ? get_field('email_address', 'option') : 'info@jwansa.com'; ?></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="contact-icon">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span><?php echo esc_html( (string)( get_field('address_text', 'option') ?: 'نجران – طريق الملك عبدالعزيز – دحضه' ) ); ?></span>
           </li>
         </ul>
       </div>
@@ -66,7 +65,7 @@
             </svg>
           </a>
           <?php endif; ?>
-          <?php $tw_url = get_field('twitter_url', 'option'); ?>
+          <?php $tw_url = get_field('twitter_url', 'option') ?: 'https://x.com/jwan_clinic'; ?>
           <?php if($tw_url): ?>
           <a href="<?php echo esc_url($tw_url); ?>" class="social-icon" aria-label="Twitter / X" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="currentColor">
@@ -75,7 +74,7 @@
             </svg>
           </a>
           <?php endif; ?>
-          <?php $ig_url = get_field('instagram_url', 'option'); ?>
+          <?php $ig_url = get_field('instagram_url', 'option') ?: 'https://www.instagram.com/jwan_clinic_sa/'; ?>
           <?php if($ig_url): ?>
           <a href="<?php echo esc_url($ig_url); ?>" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -94,7 +93,23 @@
             </svg>
           </a>
           <?php endif; ?>
-          <?php $wa_url = get_field('whatsapp_number', 'option'); ?>
+          <?php $tiktok_url = get_field('tiktok_url', 'option') ?: 'https://www.tiktok.com/@jwan_clinic'; ?>
+          <?php if($tiktok_url): ?>
+          <a href="<?php echo esc_url($tiktok_url); ?>" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 15.68a6.32 6.32 0 0 0 6.27 6.32 6.32 6.32 0 0 0 6.27-6.31V7.97a8.36 8.36 0 0 0 4.33 1.23V5.88a5.02 5.02 0 0 1-2.28-.53V6.69z"/>
+            </svg>
+          </a>
+          <?php endif; ?>
+          <?php $pinterest_url = get_field('pinterest_url', 'option') ?: 'https://www.pinterest.com/jwansaClinic/'; ?>
+          <?php if($pinterest_url): ?>
+          <a href="<?php echo esc_url($pinterest_url); ?>" class="social-icon" aria-label="Pinterest" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.168 0 7.41 2.967 7.41 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.601 0 12.017 0z"/>
+            </svg>
+          </a>
+          <?php endif; ?>
+          <?php $wa_url = get_field('whatsapp_number', 'option') ?: '+966177222220'; ?>
           <?php if($wa_url): ?>
           <a href="https://wa.me/<?php echo preg_replace('/[^0-9]/', '', $wa_url); ?>" class="social-icon" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="currentColor">

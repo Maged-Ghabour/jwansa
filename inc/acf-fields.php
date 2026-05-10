@@ -55,10 +55,34 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				'type'          => 'url',
 			),
 			array(
+				'key'           => 'field_tiktok_url',
+				'label'         => 'رابط تيك توك',
+				'name'          => 'tiktok_url',
+				'type'          => 'url',
+			),
+			array(
+				'key'           => 'field_pinterest_url',
+				'label'         => 'رابط بنترست',
+				'name'          => 'pinterest_url',
+				'type'          => 'url',
+			),
+			array(
 				'key'           => 'field_snapchat_url',
 				'label'         => 'رابط سناب شات',
 				'name'          => 'snapchat_url',
 				'type'          => 'url',
+			),
+			array(
+				'key'           => 'field_email_address',
+				'label'         => 'البريد الإلكتروني',
+				'name'          => 'email_address',
+				'type'          => 'email',
+			),
+			array(
+				'key'           => 'field_address_text',
+				'label'         => 'عنوان العيادة',
+				'name'          => 'address_text',
+				'type'          => 'text',
 			),
 			array(
 				'key'           => 'field_tax_number',
