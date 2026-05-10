@@ -5,7 +5,7 @@
       <div class="footer__col footer__brand">
         <img src="<?php echo get_template_directory_uri(); ?>/images/footerlogo.png" alt="<?php bloginfo( 'name' ); ?>" class="footer__logo" />
         <p class="footer__desc">
-            <?php echo get_field('footer_description', 'option') ? get_field('footer_description', 'option') : 'عيادة جوان لطب الأسنان توفر لك تجربة مريحة للعناية بأسنانك مع أفضل الكوادر الطبية.'; ?>
+            <?php echo esc_html( (string)( get_field('footer_description', 'option') ?: 'عيادة جوان لطب الأسنان توفر لك تجربة مريحة للعناية بأسنانك مع أفضل الكوادر الطبية.' ) ); ?>
         </p>
       </div>
 

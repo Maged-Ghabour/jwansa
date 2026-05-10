@@ -7,8 +7,8 @@ get_header(); ?>
   <!-- ===== HERO SECTION ===== -->
   <section class="hero">
     <div class="container hero__top">
-      <h1 class="hero__title"><?php echo get_field('hero_title') ? get_field('hero_title') : 'ابتسامة بدون ألم... بسعر ثابت 175 ريال فقط'; ?></h1>
-      <p class="hero__sub"><?php echo get_field('hero_subtitle') ? get_field('hero_subtitle') : 'اختر خدمتك من 4 خدمات أسنان أساسية<br>مع كشف واستشارة مجانية بالكامل'; ?></p>
+      <h1 class="hero__title"><?php echo esc_html( (string)( get_field('hero_title') ?: 'ابتسامة بدون ألم... بسعر ثابت 175 ريال فقط' ) ); ?></h1>
+      <p class="hero__sub"><?php echo wp_kses_post( (string)( get_field('hero_subtitle') ?: 'اختر خدمتك من 4 خدمات أسنان أساسية<br>مع كشف واستشارة مجانية بالكامل' ) ); ?></p>
     </div>
     <div class="container relative">
       <div class="hero__media-wrapper">
@@ -64,9 +64,9 @@ get_header(); ?>
       <div class="section-header">
         <div class="section-label">
           <img src="<?php echo get_template_directory_uri(); ?>/images/iconHeader.png" alt="" class="section-icon" />
-          <?php echo get_field('services_label') ? get_field('services_label') : 'وش يشمل العرض؟'; ?>
+          <?php echo esc_html( (string)( get_field('services_label') ?: 'وش يشمل العرض؟' ) ); ?>
         </div>
-        <h2 class="section-title"><?php echo get_field('services_title') ? get_field('services_title') : 'بسعر 175 ريال فقط تقدر تختار خدمة واحدة من التالي:'; ?></h2>
+        <h2 class="section-title"><?php echo esc_html( (string)( get_field('services_title') ?: 'بسعر 175 ريال فقط تقدر تختار خدمة واحدة من التالي:' ) ); ?></h2>
       </div>
       <div class="services__grid">
         
@@ -155,9 +155,9 @@ get_header(); ?>
       <div class="section-header">
         <div class="section-label">
           <img src="<?php echo get_template_directory_uri(); ?>/images/iconHeader.png" alt="" class="section-icon" />
-          <?php echo get_field('quiz_label') ? get_field('quiz_label') : 'هذا العرض مناسب لك إذا...'; ?>
+          <?php echo esc_html( (string)( get_field('quiz_label') ?: 'هذا العرض مناسب لك إذا...' ) ); ?>
         </div>
-        <h2 class="section-title"><?php echo get_field('quiz_title') ? get_field('quiz_title') : 'حدد بسرعة هل هذا العرض يناسب احتياجك'; ?></h2>
+        <h2 class="section-title"><?php echo esc_html( (string)( get_field('quiz_title') ?: 'حدد بسرعة هل هذا العرض يناسب احتياجك' ) ); ?></h2>
       </div>
 
       <div class="quiz-content">
@@ -168,7 +168,7 @@ get_header(); ?>
               <circle cx="12" cy="12" r="11" stroke="none"></circle>
               <path d="M7 12.5l3 3 7-7" fill="none"></path>
             </svg>
-            <strong><?php echo get_field('quiz_item_1') ? get_field('quiz_item_1') : 'مهتم بصحة أسنان أطفالك'; ?></strong>
+            <strong><?php echo esc_html( (string)( get_field('quiz_item_1') ?: 'مهتم بصحة أسنان أطفالك' ) ); ?></strong>
           </div>
           <div class="quiz-feature">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--primary)" stroke="var(--white)"
@@ -176,7 +176,7 @@ get_header(); ?>
               <circle cx="12" cy="12" r="11" stroke="none"></circle>
               <path d="M7 12.5l3 3 7-7" fill="none"></path>
             </svg>
-            <strong><?php echo get_field('quiz_item_2') ? get_field('quiz_item_2') : 'تعاني من ألم مفاجئ في أحد الأسنان'; ?></strong>
+            <strong><?php echo esc_html( (string)( get_field('quiz_item_2') ?: 'تعاني من ألم مفاجئ في أحد الأسنان' ) ); ?></strong>
           </div>
         </div>
 
@@ -192,7 +192,7 @@ get_header(); ?>
               <circle cx="12" cy="12" r="11" stroke="none"></circle>
               <path d="M7 12.5l3 3 7-7" fill="none"></path>
             </svg>
-            <strong><?php echo get_field('quiz_item_3') ? get_field('quiz_item_3') : 'تبغى تحسن شكل ابتسامتك'; ?></strong>
+            <strong><?php echo esc_html( (string)( get_field('quiz_item_3') ?: 'تبغى تحسن شكل ابتسامتك' ) ); ?></strong>
           </div>
           <div class="quiz-feature">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--primary)" stroke="var(--white)"
@@ -200,7 +200,7 @@ get_header(); ?>
               <circle cx="12" cy="12" r="11" stroke="none"></circle>
               <path d="M7 12.5l3 3 7-7" fill="none"></path>
             </svg>
-            <strong><?php echo get_field('quiz_item_4') ? get_field('quiz_item_4') : 'تحتاج حل سريع وبتكلفة واضحة'; ?></strong>
+            <strong><?php echo esc_html( (string)( get_field('quiz_item_4') ?: 'تحتاج حل سريع وبتكلفة واضحة' ) ); ?></strong>
           </div>
         </div>
 
@@ -225,9 +225,9 @@ get_header(); ?>
       <div class="section-header">
         <div class="section-label">
           <img src="<?php echo get_template_directory_uri(); ?>/images/iconHeader.png" alt="" class="section-icon" />
-          <?php echo get_field('why_label') ? get_field('why_label') : 'ليش تختار عيادة جوان؟'; ?>
+          <?php echo esc_html( (string)( get_field('why_label') ?: 'ليش تختار عيادة جوان؟' ) ); ?>
         </div>
-        <h2 class="section-title"><?php echo get_field('why_title') ? get_field('why_title') : 'أسباب تخلي ثقتك فينا أسهل'; ?></h2>
+        <h2 class="section-title"><?php echo esc_html( (string)( get_field('why_title') ?: 'أسباب تخلي ثقتك فينا أسهل' ) ); ?></h2>
       </div>
       <div class="why-us__grid">
         

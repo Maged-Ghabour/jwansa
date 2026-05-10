@@ -4,7 +4,7 @@
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="<?php bloginfo( 'description' ); ?>" />
+  <meta name="description" content="<?php echo esc_attr( get_bloginfo( 'description', 'display' ) ); ?>" />
   <?php wp_head(); ?>
 </head>
 
@@ -29,10 +29,14 @@
       <nav class="navbar__links" id="navLinks">
         <?php
         wp_nav_menu( array(
-            'theme_location' => 'primary',
-            'menu_class'     => '',
-            'container'      => false,
-            'fallback_cb'    => false, // We'll output default links if no menu exists
+            'theme_location'  => 'primary',
+            'menu_class'      => 'navbar__menu',
+            'container'       => false,
+            'fallback_cb'     => '__return_false',
+            'link_before'     => '',
+            'link_after'      => '',
+            'items_wrap'      => '%3$s',
+            'depth'           => 1,
         ) );
         ?>
         <?php if ( ! has_nav_menu( 'primary' ) ) : ?>
