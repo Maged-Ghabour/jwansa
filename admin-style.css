@@ -1,0 +1,178 @@
+/* 
+ * Jwansa Clinic - Custom Admin Styles
+ * Colors: Primary (#216894), Secondary (#0ab5b0), Navy (#0d2137)
+ */
+
+/* Import Cairo Font */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+/* ==========================================================================
+   WP ADMIN DASHBOARD (wp-admin)
+   ========================================================================== */
+
+/* Apply Cairo Font Everywhere */
+body.wp-admin,
+body.wp-admin #wpadminbar *,
+body.wp-admin #adminmenu *,
+body.wp-admin h1, body.wp-admin h2, body.wp-admin h3, body.wp-admin h4, body.wp-admin h5, body.wp-admin h6,
+body.wp-admin p, body.wp-admin a, body.wp-admin div, body.wp-admin span {
+    font-family: 'Cairo', sans-serif !important;
+}
+
+/* Custom Admin Menu Colors */
+#adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {
+    background-color: #0d2137 !important;
+}
+
+#adminmenu a {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+#adminmenu a:hover,
+#adminmenu li.menu-top:hover,
+#adminmenu li.opensub > a.menu-top,
+#adminmenu li > a.menu-top:focus {
+    background-color: #174a6c !important;
+    color: #ffffff !important;
+}
+
+/* Active Menu Item */
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, 
+#adminmenu li.current a.menu-top, 
+.folded #adminmenu li.wp-has-current-submenu, 
+.folded #adminmenu li.current.menu-top {
+    background-color: #216894 !important;
+    color: #ffffff !important;
+}
+
+#adminmenu .wp-submenu li.current a,
+#adminmenu .wp-submenu li.current a:hover,
+#adminmenu .wp-submenu li.current a:focus {
+    color: #0ab5b0 !important;
+}
+
+/* Admin Menu Icons */
+#adminmenu div.wp-menu-image:before {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+#adminmenu li.wp-has-current-submenu div.wp-menu-image:before,
+#adminmenu li.current div.wp-menu-image:before,
+#adminmenu a:hover div.wp-menu-image:before {
+    color: #0ab5b0 !important;
+}
+
+/* Admin Bar Background */
+#wpadminbar {
+    background: #0d2137 !important;
+}
+#wpadminbar .ab-item:hover,
+#wpadminbar #wp-admin-bar-site-name-default:hover,
+#wpadminbar .menupop.hover > a {
+    background: #174a6c !important;
+    color: #ffffff !important;
+}
+
+
+/* ==========================================================================
+   WP LOGIN SCREEN (wp-login.php)
+   ========================================================================== */
+
+/* Background */
+body.login {
+    background: linear-gradient(135deg, #0d2137 0%, #216894 100%) !important;
+    font-family: 'Cairo', sans-serif !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+body.login h1 {
+    display: flex;
+    justify-content: center;
+}
+
+/* Logo Setup */
+body.login h1 a {
+    background-image: url('images/logo.png') !important;
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    width: 250px !important;
+    height: 100px !important;
+    margin-bottom: 20px !important;
+    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
+}
+
+/* Form Container */
+body.login #loginform,
+body.login #registerform,
+body.login #lostpasswordform {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+    border: none !important;
+    padding: 30px !important;
+}
+
+/* Form Inputs */
+body.login .input {
+    border-radius: 8px !important;
+    border: 1px solid #e2e8f0 !important;
+    padding: 10px 15px !important;
+    font-size: 16px !important;
+    font-family: 'Cairo', sans-serif !important;
+    box-shadow: none !important;
+    transition: border-color 0.3s ease;
+}
+
+body.login .input:focus {
+    border-color: #216894 !important;
+    box-shadow: 0 0 0 2px rgba(33, 104, 148, 0.2) !important;
+}
+
+/* Submit Button */
+body.login .button-primary {
+    background: #216894 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(33, 104, 148, 0.3) !important;
+    color: white !important;
+    font-size: 16px !important;
+    font-family: 'Cairo', sans-serif !important;
+    text-shadow: none !important;
+    padding: 5px 24px !important;
+    height: auto !important;
+    min-height: 40px !important;
+    line-height: 1.5 !important;
+    transition: all 0.3s ease;
+}
+
+body.login .button-primary:hover {
+    background: #174a6c !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(33, 104, 148, 0.4) !important;
+}
+
+/* Links below form */
+body.login #nav a,
+body.login #backtoblog a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 14px !important;
+    transition: color 0.3s ease;
+}
+
+body.login #nav a:hover,
+body.login #backtoblog a:hover {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+}
+
+/* Language Switcher */
+body.login .language-switcher {
+    margin-top: 20px !important;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 10px;
+    border-radius: 8px;
+}

@@ -175,3 +175,47 @@ if ( ! function_exists( 'the_sub_field' ) ) {
 		// do nothing
 	}
 }
+
+/* ==========================================================================
+   CUSTOM ADMIN & LOGIN DASHBOARD STYLES
+   ========================================================================== */
+
+/**
+ * Enqueue custom styles for WP Admin Dashboard
+ */
+function jwansa_admin_styles() {
+	wp_enqueue_style( 'jwansa-admin-style', get_template_directory_uri() . '/admin-style.css', array(), wp_get_theme()->get( 'Version' ) );
+}
+add_action( 'admin_enqueue_scripts', 'jwansa_admin_styles' );
+
+/**
+ * Enqueue custom styles for WP Login Screen
+ */
+function jwansa_login_styles() {
+	wp_enqueue_style( 'jwansa-login-style', get_template_directory_uri() . '/admin-style.css', array(), wp_get_theme()->get( 'Version' ) );
+}
+add_action( 'login_enqueue_scripts', 'jwansa_login_styles' );
+
+/**
+ * Change the Login Screen Logo Link to the website homepage instead of wordpress.org
+ */
+function jwansa_login_logo_url() {
+	return home_url();
+}
+add_filter( 'login_headerurl', 'jwansa_login_logo_url' );
+
+/**
+ * Change the Login Screen Logo Title
+ */
+function jwansa_login_logo_url_title() {
+	return get_bloginfo( 'name' );
+}
+add_filter( 'login_headertext', 'jwansa_login_logo_url_title' );
+
+/**
+ * Remove WordPress Logo from the Admin Bar
+ */
+function jwansa_remove_wp_logo( $wp_admin_bar ) {
+	$wp_admin_bar->remove_node( 'wp-logo' );
+}
+add_action( 'admin_bar_menu', 'jwansa_remove_wp_logo', 999 );
