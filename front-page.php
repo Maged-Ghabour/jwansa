@@ -36,22 +36,22 @@ get_header(); ?>
         <div class="stat-item">
           <img src="<?php echo get_template_directory_uri(); ?>/images/icon_1.png" alt="عنوان العيادة" class="stat-item__icon" />
           <div class="stat-item__text">
-            <strong><?php echo get_field('stat_1_title', 'option') ? get_field('stat_1_title', 'option') : 'عنوان العيادة:'; ?></strong>
-            <span><?php echo get_field('stat_1_text', 'option') ? get_field('stat_1_text', 'option') : 'عيادة جوان - نجران - شارع المعتصم'; ?></span>
+            <strong><?php echo jwansa_get_global_field('stat_1_title') ? jwansa_get_global_field('stat_1_title') : 'عنوان العيادة:'; ?></strong>
+            <span><?php echo jwansa_get_global_field('stat_1_text') ? jwansa_get_global_field('stat_1_text') : 'عيادة جوان - نجران - شارع المعتصم'; ?></span>
           </div>
         </div>
         <div class="stat-item">
           <img src="<?php echo get_template_directory_uri(); ?>/images/icon_2.png" alt="مواعيد العمل" class="stat-item__icon" />
           <div class="stat-item__text">
-            <strong><?php echo get_field('stat_2_title', 'option') ? get_field('stat_2_title', 'option') : 'مواعيد العمل:'; ?></strong>
-            <span><?php echo get_field('stat_2_text', 'option') ? get_field('stat_2_text', 'option') : 'من السبت الى الخميس - من الساعة 3 م الى 11 م'; ?></span>
+            <strong><?php echo jwansa_get_global_field('stat_2_title') ? jwansa_get_global_field('stat_2_title') : 'مواعيد العمل:'; ?></strong>
+            <span><?php echo jwansa_get_global_field('stat_2_text') ? jwansa_get_global_field('stat_2_text') : 'من السبت الى الخميس - من الساعة 3 م الى 11 م'; ?></span>
           </div>
         </div>
         <div class="stat-item">
           <img src="<?php echo get_template_directory_uri(); ?>/images/icon_3.png" alt="رقم العيادة" class="stat-item__icon" />
           <div class="stat-item__text">
-            <strong><?php echo get_field('stat_3_title', 'option') ? get_field('stat_3_title', 'option') : 'رقم العيادة:'; ?></strong>
-            <span dir="ltr"><?php echo get_field('stat_3_text', 'option') ? get_field('stat_3_text', 'option') : '+966177222220'; ?></span>
+            <strong><?php echo jwansa_get_global_field('stat_3_title') ? jwansa_get_global_field('stat_3_title') : 'رقم العيادة:'; ?></strong>
+            <span dir="ltr"><?php echo jwansa_get_global_field('stat_3_text') ? jwansa_get_global_field('stat_3_text') : '+966177222220'; ?></span>
           </div>
         </div>
       </div>

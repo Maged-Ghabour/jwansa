@@ -85,16 +85,16 @@ add_action( 'wp_enqueue_scripts', 'jwansa_scripts' );
 /**
  * ACF Options Page — يجب وجودها لكي تعمل get_field('...', 'option')
  */
-if ( function_exists( 'acf_add_options_page' ) ) {
-	acf_add_options_page( array(
-		'page_title' => 'إعدادات الموقع',
-		'menu_title' => 'إعدادات الموقع',
-		'menu_slug'  => 'jwansa-site-options',
-		'capability' => 'edit_pages', // السماح للمحررين (Editors) بالدخول لهذه الصفحة
-		'redirect'   => false,
-		'icon_url'   => 'dashicons-admin-generic',
-		'position'   => 2,
-	) );
+/**
+ * Helper function to get global fields from the Front Page instead of an Options Page
+ * This makes it compatible with ACF Free!
+ */
+function jwansa_get_global_field( $field_name ) {
+	$front_page_id = get_option('page_on_front');
+	if ( $front_page_id ) {
+		return get_field( $field_name, $front_page_id );
+	}
+	return get_field( $field_name );
 }
 
 /**

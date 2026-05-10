@@ -5,11 +5,17 @@
 
 if ( function_exists( 'acf_add_local_field_group' ) ) :
 
-	// 1. Site Options (إعدادات الموقع)
+	// 1. Front Page Fields (حقول الصفحة الرئيسية وإعدادات الموقع)
 	acf_add_local_field_group( array(
-		'key'                   => 'group_site_options',
-		'title'                 => 'إعدادات الموقع العامة',
+		'key'                   => 'group_front_page',
+		'title'                 => 'إعدادات الموقع والصفحة الرئيسية',
 		'fields'                => array(
+			// Global Settings Tab
+			array(
+				'key'   => 'field_tab_global',
+				'label' => 'إعدادات عامة (التواصل والفوتر)',
+				'type'  => 'tab',
+			),
 			array(
 				'key'           => 'field_footer_desc',
 				'label'         => 'وصف الفوتر',
@@ -138,29 +144,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				'type'          => 'text',
 				'default_value' => '+966177222220',
 			),
-		),
-		'location'              => array(
-			array(
-				array(
-					'param'    => 'options_page',
-					'operator' => '==',
-					'value'    => 'jwansa-site-options',
-				),
-			),
-		),
-		'menu_order'            => 0,
-		'position'              => 'normal',
-		'style'                 => 'seamless',
-		'label_placement'       => 'top',
-		'instruction_placement' => 'label',
-		'active'                => true,
-	) );
 
-	// 2. Front Page Fields (حقول الصفحة الرئيسية)
-	acf_add_local_field_group( array(
-		'key'                   => 'group_front_page',
-		'title'                 => 'إعدادات الصفحة الرئيسية',
-		'fields'                => array(
 			// Hero Section
 			array(
 				'key'   => 'field_tab_hero',
