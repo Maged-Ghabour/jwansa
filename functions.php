@@ -90,8 +90,10 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 		'page_title' => 'إعدادات الموقع',
 		'menu_title' => 'إعدادات الموقع',
 		'menu_slug'  => 'jwansa-site-options',
-		'capability' => 'edit_posts',
+		'capability' => 'edit_pages', // السماح للمحررين (Editors) بالدخول لهذه الصفحة
 		'redirect'   => false,
+		'icon_url'   => 'dashicons-admin-generic',
+		'position'   => 2,
 	) );
 }
 
@@ -229,3 +231,54 @@ function jwansa_remove_wp_logo( $wp_admin_bar ) {
 	$wp_admin_bar->remove_node( 'wp-logo' );
 }
 add_action( 'admin_bar_menu', 'jwansa_remove_wp_logo', 999 );
+
+/**
+ * Clean up Admin Dashboard for non-administrators (Editors/Clinic Staff)
+ */
+function jwansa_clean_admin_dashboard() {
+	// If the user is an Administrator, don't hide anything (so you can still manage the site)
+	if ( current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	// Remove default WP menus
+	remove_menu_page( 'plugins.php' ); // إضافات
+	remove_menu_page( 'tools.php' ); // أدوات
+	remove_menu_page( 'options-general.php' ); // الإعدادات
+
+	// Remove plugin menus (by their slugs)
+	remove_menu_page( 'elementor' ); // Elementor
+	remove_menu_page( 'edit.php?post_type=elementor_library' ); // Elementor Templates
+	remove_menu_page( 'hostinger' ); // Hostinger
+	remove_menu_page( 'litespeed' ); // LiteSpeed Cache
+	remove_menu_page( 'edit.php?post_type=acf-field-group' ); // ACF Plugin Menu
+	remove_menu_page( 'deployer-for-git' ); // Deployer for Git (Guessing slug, we'll also use CSS to be safe)
+	remove_menu_page( 'wp-git-deploy' ); 
+	
+	// Remove some submenu items just in case
+	remove_submenu_page( 'themes.php', 'themes.php' ); // Hide theme switcher
+}
+add_action( 'admin_menu', 'jwansa_clean_admin_dashboard', 999 );
+
+/**
+ * Add CSS to force hide complex plugins for non-admins (fallback if slugs change)
+ */
+function jwansa_force_hide_admin_menus() {
+	if ( current_user_can( 'manage_options' ) ) {
+		return;
+	}
+	echo '<style>
+		#toplevel_page_hostinger,
+		#toplevel_page_elementor,
+		#toplevel_page_litespeed,
+		#toplevel_page_deployer-for-git,
+		#toplevel_page_edit-post_type-acf-field-group,
+		#menu-plugins,
+		#menu-tools,
+		#menu-settings,
+		#toplevel_page_wp-git-deploy {
+			display: none !important;
+		}
+	</style>';
+}
+add_action( 'admin_head', 'jwansa_force_hide_admin_menus' );
