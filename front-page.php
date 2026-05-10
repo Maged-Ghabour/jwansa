@@ -51,7 +51,7 @@ get_header(); ?>
           <img src="<?php echo get_template_directory_uri(); ?>/images/icon_3.png" alt="رقم العيادة" class="stat-item__icon" />
           <div class="stat-item__text">
             <strong><?php echo get_field('stat_3_title', 'option') ? get_field('stat_3_title', 'option') : 'رقم العيادة:'; ?></strong>
-            <span dir="ltr"><?php echo get_field('stat_3_text', 'option') ? get_field('stat_3_text', 'option') : '+974 123456789'; ?></span>
+            <span dir="ltr"><?php echo get_field('stat_3_text', 'option') ? get_field('stat_3_text', 'option') : '+966177222220'; ?></span>
           </div>
         </div>
       </div>

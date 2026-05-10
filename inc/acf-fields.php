@@ -91,6 +91,53 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				'name'          => 'tax_number',
 				'type'          => 'text',
 			),
+			array(
+				'key'   => 'field_tab_stats_bar',
+				'label' => 'شريط المعلومات (تحت الصورة الرئيسية)',
+				'type'  => 'tab',
+			),
+			array(
+				'key'           => 'field_stat_1_title',
+				'label'         => 'عنوان الخانة الأولى',
+				'name'          => 'stat_1_title',
+				'type'          => 'text',
+				'default_value' => 'عنوان العيادة:',
+			),
+			array(
+				'key'           => 'field_stat_1_text',
+				'label'         => 'نص الخانة الأولى',
+				'name'          => 'stat_1_text',
+				'type'          => 'text',
+				'default_value' => 'عيادة جوان - نجران - شارع المعتصم',
+			),
+			array(
+				'key'           => 'field_stat_2_title',
+				'label'         => 'عنوان الخانة الثانية',
+				'name'          => 'stat_2_title',
+				'type'          => 'text',
+				'default_value' => 'مواعيد العمل:',
+			),
+			array(
+				'key'           => 'field_stat_2_text',
+				'label'         => 'نص الخانة الثانية',
+				'name'          => 'stat_2_text',
+				'type'          => 'text',
+				'default_value' => 'من السبت الى الخميس - من الساعة 3 م الى 11 م',
+			),
+			array(
+				'key'           => 'field_stat_3_title',
+				'label'         => 'عنوان الخانة الثالثة',
+				'name'          => 'stat_3_title',
+				'type'          => 'text',
+				'default_value' => 'رقم العيادة:',
+			),
+			array(
+				'key'           => 'field_stat_3_text',
+				'label'         => 'نص الخانة الثالثة',
+				'name'          => 'stat_3_text',
+				'type'          => 'text',
+				'default_value' => '+966177222220',
+			),
 		),
 		'location'              => array(
 			array(
@@ -271,7 +318,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 			array(
 				'key'          => 'field_why_list',
 				'label'        => 'قائمة المميزات',
-				'name'         => 'why_list',
+				'name'         => 'why_us_list',
 				'type'         => 'repeater',
 				'layout'       => 'block',
 				'button_label' => 'إضافة ميزة',
@@ -291,7 +338,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					array(
 						'key'           => 'field_why_icon_sub',
 						'label'         => 'أيقونة الميزة',
-						'name'          => 'why_icon',
+						'name'          => 'why_image',
 						'type'          => 'image',
 						'return_format' => 'array',
 					),
