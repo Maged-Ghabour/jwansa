@@ -28,6 +28,46 @@ endif;
 add_action( 'after_setup_theme', 'jwansa_setup' );
 
 /**
+ * PHP 8.x Compatibility — منع تمرير null لدوال WordPress الداخلية
+ * يحل مشكلة: strpos(): null  و  str_replace(): null
+ */
+function jwansa_php8_null_fixes() {
+
+	// 1. تنظيف body_class من القيم غير النصية
+	add_filter( 'body_class', function( $classes ) {
+		return array_values( array_filter( array_map( 'strval', (array) $classes ) ) );
+	}, 999 );
+
+	// 2. تنظيف CSS classes في قائمة التنقل
+	add_filter( 'nav_menu_css_class', function( $classes ) {
+		return array_values( array_filter( array_map( 'strval', (array) $classes ) ) );
+	}, 999 );
+
+	// 3. منع null في روابط قائمة التنقل
+	add_filter( 'nav_menu_link_attributes', function( $atts ) {
+		return array_map( function( $v ) { return (string) ( $v ?? '' ); }, (array) $atts );
+	}, 999 );
+
+	// 4. منع null في post_class
+	add_filter( 'post_class', function( $classes ) {
+		return array_values( array_filter( array_map( 'strval', (array) $classes ) ) );
+	}, 999 );
+
+	// 5. منع null في عنوان الموقع
+	add_filter( 'bloginfo', function( $output, $show ) {
+		return (string) ( $output ?? '' );
+	}, 999, 2 );
+
+	// 6. منع null في the_title
+	add_filter( 'the_title', function( $title ) {
+		return (string) ( $title ?? '' );
+	}, 999 );
+}
+add_action( 'init', 'jwansa_php8_null_fixes' );
+
+
+
+/**
  * Enqueue scripts and styles.
  */
 function jwansa_scripts() {
